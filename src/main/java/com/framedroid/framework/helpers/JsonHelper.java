@@ -10,11 +10,12 @@ import java.util.List;
  */
 
 public class JsonHelper {
-    public static JSONObject toJson(PreJson...preJsons) {
+    public JSONObject build(PreJson...preJsons) {
         JSONObject jsonObject = new JSONObject();
         try {
             for (PreJson preJson : preJsons) {
-                jsonObject.put(preJson.key, preJson.value == null ? preJson.jsonValue : preJson.value);
+
+                jsonObject.put(preJson.key, preJson.value);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -24,20 +25,29 @@ public class JsonHelper {
 
     public static class PreJson {
         String key;
-        String value;
-        JSONObject jsonValue;
+//        String value;
+//        JSONObject jsonValue;
+//        int intValue;
+//        double doubleValue;
+        Object value;
 
-        public PreJson(String key, String value) {
+        public PreJson(String key, Object value) {
             this.key = key;
             this.value = value;
         }
+//
+//        public PreJson(String key, int value) {
+//            this.key = key;
+//            this.value = value;
+//        }
+//
+//        public PreJson(String key, double value) {
+//            this.key = key;
+//            this.value = value;
+//        }
 
-        public PreJson(String key, JSONObject value) {
-            this.key = key;
-            this.jsonValue = value;
-        }
 
-        public static class Builder {
+        public class Builder {
             List<PreJson> list = new ArrayList<>();
             public Builder() {
                 list = new ArrayList<>();
@@ -48,12 +58,12 @@ public class JsonHelper {
                 return this;
             }
 
-            public List<PreJson> build() {
-                return list;
-            }
-            public JSONObject buildToJson() {
-                return toJson(list.toArray(new PreJson[list.size()]));
-            }
+//            public List<PreJson> build() {
+//                return list;
+//            }
+//            public JSONObject buildToJson() {
+//                return toJson(list.toArray(new PreJson[list.size()]));
+//            }
         }
     }
 }
