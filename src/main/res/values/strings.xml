@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Framework</string>
+    <plurals name="seconds_ago">
+        <item quantity="one">second ago</item>
+        <item quantity="few">seconds ago</item>
+        <item quantity="other">seconds ago</item>
+    </plurals>
+    <plurals name="minutes_ago">
+        <item quantity="one">minute ago</item>
+        <item quantity="few">minutes ago</item>
+        <item quantity="other">minutes ago</item>
+    </plurals>
+    <plurals name="hours_ago">
+        <item quantity="one">hour ago</item>
+        <item quantity="few">hours ago</item>
+        <item quantity="other">hours ago</item>
+    </plurals>
+    <plurals name="days_ago">
+        <item quantity="one">day ago</item>
+        <item quantity="few">days ago</item>
+        <item quantity="other">days ago</item>
+    </plurals>
+    <plurals name="months_ago">
+        <item quantity="one">month ago</item>
+        <item quantity="few">months ago</item>
+        <item quantity="other">months ago</item>
+    </plurals>
+    <plurals name="years_ago">
+        <item quantity="one">year ago</item>
+        <item quantity="few">years ago</item>
+        <item quantity="other">years ago</item>
+    </plurals>
+</resources>
