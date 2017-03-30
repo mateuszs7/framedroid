@@ -2,8 +2,6 @@ package com.framedroid.framework.api;
 
 import android.widget.Toast;
 
-import com.xsneak.Config;
-import com.xsneak.R;
 
 import org.json.JSONObject;
 
@@ -14,6 +12,6 @@ import org.json.JSONObject;
 public abstract class SimpleResponseHandler extends ResponseHandler {
     @Override
     public void onFailure(JSONObject jsonObject) {
-        Toast.makeText(Config.getContext(), Config.getString(R.string.error_something_wrong), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(Config.getContext(), Fram.getString(R.string.error_something_wrong), Toast.LENGTH_SHORT).show();
     }
 }

@@ -13,7 +13,7 @@ import com.framedroid.framework.helpers.ViewHelper;
  * Created by mateu on 23/03/2017.
  */
 
-public class FrameDroid {
+public class FrameDroid extends Methods {
     private static ScreenHelper screenHelper;
     private static TimeHelper timeHelper;
     private static PrefsHelper prefsHelper;

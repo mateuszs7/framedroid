@@ -68,11 +68,11 @@ public abstract class API {
     }
 
     private static void logRequest(String path, JSONObject json) {
-        if (json == null) {
-            if (Config.getBool("api.log")) Log.i("Xsneak.API.log", "mUrl: " + mUrl + path + "; Entity: null");
-            return;
-        }
-        if (Config.getBool("api.log")) Log.i("Xsneak.API.log", "mUrl: " + mUrl + path + "; Entity: " + json.toString());
+//        if (json == null) {
+//            if (Config.getBool("api.log")) Log.i("API.log", "mUrl: " + mUrl + path + "; Entity: null");
+//            return;
+//        }
+//        if (Config.getBool("api.log")) Log.i("API.log", "mUrl: " + mUrl + path + "; Entity: " + json.toString());
     }
 
     protected static JSONObject getSimpleJson(String key, String value) {
@@ -98,49 +98,6 @@ public abstract class API {
     }
 
     private static void addHeaders(AsyncHttpClient client, String path, String data, boolean simpleToken) {
-        if (simpleToken) {
-            String token =  Config.hashToSha256(data + Config.getParameter("api.token"));
-            if (Config.getBool("api.log")) Log.i("token", token);
-            client.addHeader("X-token", token);
-            return;
-        }
-
-        if (Config.getPreference(Config.PUBLIC_KEY) == null || Config.getPreference(Config.PRIVATE_KEY) == null) {
-            if (Config.getBool("api.log")) Log.i("Xsneak.API.log", "hmac ommited, publicKey or privateKey is null");
-            return;
-        }
-
-        Log.i("X-public", Config.getPreference(Config.PUBLIC_KEY));
-        Log.i("X-hmac", calcHmac(Config.getParameter("api.path") + path + data));
-
-
-        client.addHeader("X-public", Config.getPreference(Config.PUBLIC_KEY));
-//        client.addHeader("X-hmac", calcHmac(Config.getParameter("api.path") + path + data));
-        client.addHeader("X-hmac", "skip3214");
-    }
-
-    private static String calcHmac(String data) {
-        try {
-            Mac mac = Mac.getInstance("HmacSHA256");
-            SecretKeySpec sk = new SecretKeySpec(Config.getPreference(Config.PRIVATE_KEY).getBytes(), mac.getAlgorithm());
-            mac.init(sk);
-            byte[] result = mac.doFinal((Config.getPreference(Config.PUBLIC_KEY) + data).getBytes());
-
-            StringBuffer hash = new StringBuffer();
-
-            for (int i = 0; i < result.length; i++) {
-                String hex = Integer.toHexString(0xFF & result[i]);
-                if (hex.length() == 1) {
-                    hash.append('0');
-                }
-                hash.append(hex);
-            }
-            return hash.toString();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     private static ResponseHandler simpleResponseHandler = new ResponseHandler() {
