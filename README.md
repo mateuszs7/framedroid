@@ -1,4 +1,5 @@
 # framedroid
+[ ![Download](https://api.bintray.com/packages/mateuszs7/maven/framedroid/images/download.svg) ](https://bintray.com/mateuszs7/maven/framedroid/_latestVersion)
 
 ## Installation (gradle)
 
