@@ -2,6 +2,7 @@ package com.framedroid.framework.api;
 
 import android.util.Log;
 
+import com.framedroid.framework.Config;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.json.JSONException;
@@ -13,7 +14,7 @@ import cz.msebera.android.httpclient.Header;
  * Created by Mateusz - Limtel on 2016-01-26.
  */
 public abstract class ResponseHandler extends AsyncHttpResponseHandler {
-    private static final String TAG = "Xsneak.ResponseHandle";
+    private static final String TAG = "ResponseHandle";
 
     public abstract void onSuccess(JSONObject jsonObject);
     public abstract void onFailure(JSONObject jsonObject);
@@ -32,8 +33,8 @@ public abstract class ResponseHandler extends AsyncHttpResponseHandler {
 
             JSONObject jsonObject = new JSONObject(new String(responseBody));
 
-//            if(Config.getBool("api.log"))
-//                Log.i(TAG, jsonObject.toString());
+            if(Config.apiLogRequest)
+                Log.i(TAG, jsonObject.toString());
             if (jsonObject.optString("status").equals("ok")) {
                 onSuccess(jsonObject);
                 return;
@@ -53,8 +54,8 @@ public abstract class ResponseHandler extends AsyncHttpResponseHandler {
         if(responseBody != null){
             try {
                 jsonObject = new JSONObject(new String(responseBody));
-//                if(Config.getBool("api.log"))
-//                    Log.i(TAG, jsonObject.toString());
+                if(Config.apiLogRequest)
+                    Log.i(TAG, jsonObject.toString());
                 onFailure(jsonObject);
             }
             catch (JSONException e){

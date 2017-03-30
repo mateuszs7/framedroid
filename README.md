@@ -20,7 +20,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.framedroid.framework:framedroid:0.1.0'
+    compile 'com.framedroid.framework:framedroid:0.1.1'
 }
 ```
 
@@ -77,3 +77,5 @@ or
 
 ## Documentation
 * [helpers](./docs/HELPERS.md)
+* [printers](./docs/PRINTERS.md)
+* [api](./docs/API.md)

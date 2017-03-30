@@ -2,6 +2,7 @@ package com.framedroid.framework;
 
 import android.app.Application;
 import android.content.Context;
+import android.widget.Toast;
 
 import com.framedroid.framework.helpers.JsonHelper;
 import com.framedroid.framework.helpers.PrefsHelper;
@@ -25,6 +26,7 @@ public class FrameDroid extends Methods {
         screenHelper = new ScreenHelper(context);
         timeHelper = new TimeHelper(context);
         prefsHelper = new PrefsHelper(context);
+        FrameDroid.context = context;
         viewHelper = new ViewHelper();
     }
 
@@ -47,4 +49,5 @@ public class FrameDroid extends Methods {
     public static ViewHelper view() {
         return viewHelper;
     }
+
 }

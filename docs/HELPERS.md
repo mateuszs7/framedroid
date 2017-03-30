@@ -62,3 +62,19 @@ Above code will produce json like:
 * `get()`
 * `is()`
 
+
+
+## ViewHelper view()
+
+* `void multiClick(Activity, View.OnClickListener, int...)`
+* `void multiClick(View, View.OnClickListener, int...)`
+```
+multiClick(view, myClickListener, R.id.likeIcon, R.id.heartIcon, R.id.okIcon);
+```
+
+* `String getValue(Activity, int)`
+```
+getValue(this, R.id.username);
+```
+
+
