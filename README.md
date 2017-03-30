@@ -5,7 +5,7 @@
 #### 1. Add repository
 Put maven repository in Your's project build.gradle
 
-```json
+```
 allprojects {
     repositories {
         jcenter()
@@ -18,7 +18,7 @@ allprojects {
 
 #### 2. Add dependency in Your's module build.grandle
 
-```json
+```
 dependencies {
     compile 'com.framedroid.framework:framedroid:0.1.0'
 }
