@@ -60,4 +60,39 @@ public class ViewHelper {
             return null;
         }
     }
+
+
+    public static ViewWork list(Activity activity, int...resIds) {
+        return list(new ViewHolder(activity), resIds);
+    }
+
+    public static ViewWork list(View view, int...resIds) {
+        return list(new ViewHolder(view), resIds);
+    }
+
+    private static ViewWork list(ViewHolder viewHolder, int...resIds) {
+        return new ViewWork(viewHolder, resIds);
+    }
+
+    public static class ViewWork {
+        private View[] views;
+
+        public ViewWork(ViewHolder viewHolder, int[] resIds) {
+            views = new View[resIds.length];
+            for (int i = 0; i < resIds.length; i++) {
+                views[i] = viewHolder.findView(resIds[i]);
+            }
+        }
+
+        public ViewWork set(Format format) {
+            for (View view : views) {
+                format.make(view);
+            }
+            return this;
+        }
+    }
+
+    public interface Format<T> {
+        void make(T view);
+    }
 }

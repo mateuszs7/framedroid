@@ -2,6 +2,8 @@ package com.framedroid.framework;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.ColorRes;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -11,6 +13,12 @@ import android.widget.Toast;
 
 public class Methods {
     protected static Context context;
+
+    protected static Context getContext() {
+        if (context == null)
+            throw new RuntimeException("You have to initialize FrameDroid module by calling FD.init(getApplicationContext())");
+        return context;
+    }
 
     /*
      * Info printers
@@ -65,18 +73,30 @@ public class Methods {
      * Toasts
      */
     public static void toast(String string, int length) {
-        Toast.makeText(context, string, length).show();
+        Toast.makeText(getContext(), string, length).show();
     }
 
     public static void toast(String string) {
-        Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), string, Toast.LENGTH_SHORT).show();
     }
 
     public static void toast(int resId, int length) {
-        toast(context.getString(resId), length);
+        toast(getContext().getString(resId), length);
     }
 
     public static void toast(int resId) {
         toast(resId, Toast.LENGTH_SHORT);
+    }
+
+    /*
+     * Resources
+     */
+
+    public static int color(@ColorRes int resId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return getContext().getResources().getColor(resId, context.getTheme());
+        } else {
+            return getContext().getResources().getColor(resId);
+        }
     }
 }
