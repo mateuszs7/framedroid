@@ -2,8 +2,11 @@ package com.framedroid.framework;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -24,14 +27,29 @@ public class Methods {
      * Info printers
      */
 
+    /**
+     * Print string, integer, object etc. to logcat<br>
+     * Using FD.print("some log");
+     * @param obj any type of variable
+     */
     public static void print(Object obj) {
         Log.i("FrameDroidLog", obj + "");
     }
 
+    /**
+     * Print string, integer, object etc. to logcat<br>
+     * Using FD.p("some log");
+     * @param obj any type of variable
+     */
     public static void p(Object obj) {
         print(obj + "");
     }
 
+    /**
+     * Print string, integer, object etc. to logcat<br>
+     * Using FD.print("some log", true, 21.4);
+     * @param objs any type of variable
+     */
     public static void print(Object...objs) {
         String text = "";
         for (Object obj : objs) {
@@ -40,6 +58,11 @@ public class Methods {
         print(text);
     }
 
+    /**
+     * Print string, integer, object etc. to logcat<br>
+     * Using FD.p("some log", true, 21.4);
+     * @param objs any type of variable
+     */
     public static void p(Object...objs) {
         print(objs);
     }
@@ -99,4 +122,18 @@ public class Methods {
             return getContext().getResources().getColor(resId);
         }
     }
+
+    public static String string(@StringRes int resId) {
+        return getContext().getString(resId);
+    }
+
+    public static Drawable drawable(@DrawableRes int resId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return getContext().getDrawable(resId);
+        } else {
+            return getContext().getResources().getDrawable(resId);
+        }
+    }
+
+
 }
