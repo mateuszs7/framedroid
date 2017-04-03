@@ -12,11 +12,18 @@ import android.widget.TextView;
 public class ViewHelper {
 
     public void multiClick(Activity activity, View.OnClickListener listener, int... resIds) {
-        setMultiClick(new ViewHolder(activity), listener, resIds);
-    }
+            setMultiClick(new ViewHolder(activity), listener, resIds);
+        }
 
     public void multiClick(View view, View.OnClickListener listener, int... resIds) {
         setMultiClick(new ViewHolder(view), listener, resIds);
+    }
+
+    public void click(View view, View.OnClickListener listener, int resId) {
+        multiClick(view, listener, resId);
+    }
+    public void click(Activity activity, View.OnClickListener listener, int resId) {
+        multiClick(activity, listener, resId);
     }
 
     private void setMultiClick(ViewHolder viewHolder, View.OnClickListener listener, int... resIds) {

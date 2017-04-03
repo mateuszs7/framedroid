@@ -9,6 +9,7 @@ import com.framedroid.framework.helpers.PrefsHelper;
 import com.framedroid.framework.helpers.ScreenHelper;
 import com.framedroid.framework.helpers.TimeHelper;
 import com.framedroid.framework.helpers.ViewHelper;
+import com.framedroid.framework.model.TestModel;
 
 /**
  * Created by mateu on 23/03/2017.
