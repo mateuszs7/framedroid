@@ -135,5 +135,13 @@ public class Methods {
         }
     }
 
+    public static Integer[] range(int start, int end) {
+        Integer[] range = new Integer[Math.abs(end - start) + 1];
+        for (int i = 0; i < range.length; i++) {
+            range[i] = end > start ? start + i : start - i;
+        }
+
+        return range;
+    }
 
 }

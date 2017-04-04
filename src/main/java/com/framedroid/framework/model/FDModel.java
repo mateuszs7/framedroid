@@ -11,8 +11,8 @@ public abstract class FDModel<T extends FDModel> {
     protected long id;
     private static Database database = new Database();
 
-    public static Database<? extends FDModel> fd() {
-        return database;
+    public static Database.Table fd(Class cls) {
+        return database.byClass(cls);
     }
 
     public long getId() {

@@ -5,7 +5,7 @@ package com.framedroid.framework.model;
  */
 
 public class TestModel extends FDModel<TestModel> {
-
+    String name;
     public static Database<TestModel> fd() {
         return fd();
     }
