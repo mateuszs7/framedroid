@@ -115,6 +115,11 @@ public class Methods {
      * Resources
      */
 
+    /**
+     * Get color from resources
+     * @param resId
+     * @return
+     */
     public static int color(@ColorRes int resId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return getContext().getResources().getColor(resId, context.getTheme());
@@ -123,10 +128,20 @@ public class Methods {
         }
     }
 
+    /**
+     * Get string from resources
+     * @param resId
+     * @return
+     */
     public static String string(@StringRes int resId) {
         return getContext().getString(resId);
     }
 
+    /**
+     * Get drawable from resources
+     * @param resId
+     * @return
+     */
     public static Drawable drawable(@DrawableRes int resId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return getContext().getDrawable(resId);
@@ -135,13 +150,43 @@ public class Methods {
         }
     }
 
+    /**
+     * Return array of range between start and end numbers
+     * @param start first number
+     * @param end last number
+     * @return
+     */
     public static Integer[] range(int start, int end) {
-        Integer[] range = new Integer[Math.abs(end - start) + 1];
-        for (int i = 0; i < range.length; i++) {
-            range[i] = end > start ? start + i : start - i;
-        }
+        return range(start, end, 1);
+    }
 
+    /**
+     * Return array of range between start and end numbers by spec period
+     * @param start Integer - first number
+     * @param end Integer - last number
+     * @param period Integer
+     * @return
+     */
+    public static Integer[] range(int start, int end, int period) {
+        Integer[] range = new Integer[(Math.abs(end - start) / period) + 1];
+        for (int i = 0; i < range.length; i++) {
+            range[i] = end > start ? start + (i * period) : start - (i * period);
+        }
         return range;
     }
 
+    /**
+     * Return array of range between start and end numbers by spec period
+     * @param start Double - first number
+     * @param end Dobule - last number
+     * @param period Double
+     * @return
+     */
+    public static Double[] range(double start, double end, double period) {
+        Double[] range = new Double[(int)(Math.abs(end - start) / period) + 1];
+        for (int i = 0; i < range.length; i++) {
+            range[i] = end > start ? start + (i * period) : start - (i * period);
+        }
+        return range;
+    }
 }

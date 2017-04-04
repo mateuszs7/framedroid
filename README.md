@@ -1,5 +1,12 @@
-# framedroid
 [ ![Download](https://api.bintray.com/packages/mateuszs7/maven/framedroid/images/download.svg) ](https://bintray.com/mateuszs7/maven/framedroid/_latestVersion)
+
+# FrameDroid
+> FrameDroid is light framework for android applications. It's provide short methods, resources and class for most android problems. Each method can be call from any place in your app.
+- Memory database
+- API helper
+- printers, toasts, resources, ranges
+- json builder
+- view, time, prefs, screen helpers
 
 ## Installation (gradle)
 
@@ -80,3 +87,4 @@ or
 * [helpers](./docs/HELPERS.md)
 * [printers](./docs/PRINTERS.md)
 * [api](./docs/API.md)
+* [methods](./docs/METHODS.md)
