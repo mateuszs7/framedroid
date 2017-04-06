@@ -2,6 +2,7 @@ package com.framedroid.framework;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.ColorRes;
@@ -133,6 +134,15 @@ public class Methods {
         } else {
             return getContext().getResources().getColor(resId);
         }
+    }
+
+    /**
+     * Parse color from hex (i.e. #123ABC) to int (i.e. 0xFF123ABC)
+     * @param hex
+     * @return
+     */
+    public static int color(String hex) {
+        return Color.parseColor(hex);
     }
 
     /**

@@ -62,6 +62,22 @@ Above code will produce json like:
 * `get()`
 * `is()`
 
+```
+prefs().set("specialKey", "someValue);
+```
+
+```
+prefs().get("specialKey")
+// above code will return "someValue"
+```
+
+```
+prefs().is("specialKey")
+// true
+
+prefs().is("otherKey")
+// false
+```
 
 
 ## ViewHelper view()
@@ -77,4 +93,14 @@ multiClick(view, myClickListener, R.id.likeIcon, R.id.heartIcon, R.id.okIcon);
 getValue(this, R.id.username);
 ```
 
-
+* ViewWork list(View, int...)
+* ViewWork list(Activity, int...)
+```java
+list(MainActivity.this, R.id.firstText, R.id.secondText).set(new ViewHelper.Format<TextView>() {
+    @Override
+    public void make(TextView view) {
+        view.setAlpha(0.3f);
+        view.setTranslationX(200f);
+    }
+});
+```
