@@ -10,6 +10,8 @@ import android.support.annotation.StringRes;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.List;
+
 /**
  * Created by mateu on 30/03/2017.
  */
@@ -30,6 +32,7 @@ public class Methods {
     /**
      * Print string, integer, object etc. to logcat<br>
      * Using FD.print("some log");
+     *
      * @param obj any type of variable
      */
     public static void print(Object obj) {
@@ -39,6 +42,7 @@ public class Methods {
     /**
      * Print string, integer, object etc. to logcat<br>
      * Using FD.p("some log");
+     *
      * @param obj any type of variable
      */
     public static void p(Object obj) {
@@ -48,9 +52,10 @@ public class Methods {
     /**
      * Print string, integer, object etc. to logcat<br>
      * Using FD.print("some log", true, 21.4);
+     *
      * @param objs any type of variable
      */
-    public static void print(Object...objs) {
+    public static void print(Object... objs) {
         String text = "";
         for (Object obj : objs) {
             text += obj + " ";
@@ -61,9 +66,10 @@ public class Methods {
     /**
      * Print string, integer, object etc. to logcat<br>
      * Using FD.p("some log", true, 21.4);
+     *
      * @param objs any type of variable
      */
-    public static void p(Object...objs) {
+    public static void p(Object... objs) {
         print(objs);
     }
 
@@ -80,7 +86,7 @@ public class Methods {
         error(obj + "");
     }
 
-    public static void error(Object...objs) {
+    public static void error(Object... objs) {
         String text = "";
         for (Object obj : objs) {
             text += obj + " ";
@@ -88,7 +94,7 @@ public class Methods {
         error(text);
     }
 
-    public static void e(Object...objs) {
+    public static void e(Object... objs) {
         error(objs);
     }
 
@@ -117,6 +123,7 @@ public class Methods {
 
     /**
      * Get color from resources
+     *
      * @param resId
      * @return
      */
@@ -130,6 +137,7 @@ public class Methods {
 
     /**
      * Get string from resources
+     *
      * @param resId
      * @return
      */
@@ -139,6 +147,7 @@ public class Methods {
 
     /**
      * Get drawable from resources
+     *
      * @param resId
      * @return
      */
@@ -152,8 +161,9 @@ public class Methods {
 
     /**
      * Return array of range between start and end numbers
+     *
      * @param start first number
-     * @param end last number
+     * @param end   last number
      * @return
      */
     public static Integer[] range(int start, int end) {
@@ -162,8 +172,9 @@ public class Methods {
 
     /**
      * Return array of range between start and end numbers by spec period
-     * @param start Integer - first number
-     * @param end Integer - last number
+     *
+     * @param start  Integer - first number
+     * @param end    Integer - last number
      * @param period Integer
      * @return
      */
@@ -177,16 +188,27 @@ public class Methods {
 
     /**
      * Return array of range between start and end numbers by spec period
-     * @param start Double - first number
-     * @param end Dobule - last number
+     *
+     * @param start  Double - first number
+     * @param end    Dobule - last number
      * @param period Double
      * @return
      */
     public static Double[] range(double start, double end, double period) {
-        Double[] range = new Double[(int)(Math.abs(end - start) / period) + 1];
+        Double[] range = new Double[(int) (Math.abs(end - start) / period) + 1];
         for (int i = 0; i < range.length; i++) {
             range[i] = end > start ? start + (i * period) : start - (i * period);
         }
         return range;
+    }
+
+    public static int toggle(List list, Object obj) {
+        if (list.contains(obj)) {
+            list.remove(obj);
+            return -1;
+        }
+        list.add(obj);
+
+        return 1;
     }
 }
