@@ -1,6 +1,8 @@
-package com.framedroid.framework.model;
+package com.framedroid.framework.database;
 
 import android.util.ArrayMap;
+
+import com.framedroid.framework.model.FDModel;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
