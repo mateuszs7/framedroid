@@ -1,5 +1,6 @@
 package com.framedroid.framework.helpers;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -20,6 +21,16 @@ public class JsonHelper {
             e.printStackTrace();
         }
         return jsonObject;
+    }
+
+    public JSONArray toArray(List list) {
+        JSONArray jsonArray = new JSONArray();
+        for (Object obj :list) {
+            jsonArray.put(obj);
+        }
+
+        return jsonArray;
+
     }
 
     public static class PreJson {
