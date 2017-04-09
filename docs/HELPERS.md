@@ -62,16 +62,16 @@ Above code will produce json like:
 * `get()`
 * `is()`
 
-```
+```java
 prefs().set("specialKey", "someValue);
 ```
 
-```
+```java
 prefs().get("specialKey")
 // above code will return "someValue"
 ```
 
-```
+```java
 prefs().is("specialKey")
 // true
 
@@ -84,12 +84,12 @@ prefs().is("otherKey")
 
 * `void multiClick(Activity, View.OnClickListener, int...)`
 * `void multiClick(View, View.OnClickListener, int...)`
-```
+```java
 multiClick(view, myClickListener, R.id.likeIcon, R.id.heartIcon, R.id.okIcon);
 ```
 
 * `String getValue(Activity, int)`
-```
+```java
 getValue(this, R.id.username);
 ```
 

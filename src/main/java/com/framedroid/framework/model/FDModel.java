@@ -1,7 +1,6 @@
 package com.framedroid.framework.model;
 
-import java.lang.reflect.ParameterizedType;
-import java.util.List;
+import com.framedroid.framework.database.Database;
 
 /**
  * Created by mateusz on 03.04.2017.

@@ -88,3 +88,9 @@ or
 * [printers](./docs/PRINTERS.md)
 * [api](./docs/API.md)
 * [methods](./docs/METHODS.md)
+
+## TODO
+- [ ] parsing json to model (using annotations)
+- [ ] events
+- methods:
+ - [ ] remove chars from string
