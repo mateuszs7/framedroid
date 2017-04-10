@@ -92,5 +92,6 @@ or
 ## TODO
 - [ ] parsing json to model (using annotations)
 - [ ] events
-- methods:
- - [ ] remove chars from string
+- [ ] remove chars from string
+- [ ] api interface
+- [ ] database relations

@@ -1,5 +1,7 @@
 package com.framedroid.framework.database;
 
+import android.support.annotation.Nullable;
+
 import com.framedroid.framework.FD;
 
 /**

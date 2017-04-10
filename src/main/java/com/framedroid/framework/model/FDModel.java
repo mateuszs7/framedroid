@@ -8,6 +8,7 @@ import com.framedroid.framework.database.Database;
 
 public abstract class FDModel<T extends FDModel> {
     protected long id;
+
     private static Database database = new Database();
 
     public static Database.Table fd(Class cls) {

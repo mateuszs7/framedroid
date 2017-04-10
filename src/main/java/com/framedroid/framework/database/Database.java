@@ -79,5 +79,9 @@ public class Database<T extends FDModel> {
             }
             return Collections.emptyList();
         }
+
+        public T save(T obj) {
+            return objects.put(obj.getId(), obj);
+        }
     }
 }

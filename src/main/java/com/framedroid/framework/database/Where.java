@@ -1,5 +1,6 @@
 package com.framedroid.framework.database;
 
+import android.content.Intent;
 import android.util.ArrayMap;
 
 import com.framedroid.framework.FD;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 
 import static android.R.attr.value;
 
@@ -22,24 +24,27 @@ public class Where<T> {
     private Object[] params;
     private Class cls;
     private boolean globalCondition = true;
+    private List<Condition> condList;
+    private Map<String, Integer> listIndex;
 
-    public Where(Class cls, List<T> elements, String conditions, Object...params) {
+    public Where(Class cls, List<T> elements, String conditions, Object... params) {
         this.elements = elements;
         this.conditions = conditions;
         this.params = params;
         this.cls = cls;
     }
 
-    public void parseConditions() throws Exception {
+    public List<T> parseConditions() throws Exception {
         String[] cond = conditions.split("(or)|(and)");
 
         FD.p(cond);
-        Map<String, Condition> condList = new ArrayMap<>();
+        condList = new ArrayList<>();
+        listIndex = new ArrayMap<>();
         for (int i = 0; i < cond.length; i++) {
             Condition c = Condition.fromRaw(cond[i], params[i]);
-            condList.put(c.fieldName, c);
+            condList.add(c);
+            listIndex.put(c.fieldName, i);
         }
-
 
         FD.p("XX", condList);
         String[] orConditions = conditions.split("or");
@@ -48,23 +53,43 @@ public class Where<T> {
             String[] andConditions = or.split("and");
             for (int j = 0; j < andConditions.length; j++) {
                 String and = andConditions[j];
-                FD.p("AA", and, "|",Condition.nameFromRaw(and));
-                Condition tCond = condList.get(Condition.nameFromRaw(and));
-                tCond.type = (j + 1 > andConditions.length) ? Condition.Type.AND : Condition.Type.OR;
-                FD.p("DD", tCond);
-                condList.put(tCond.fieldName, tCond);
-//                Field field = cls.getField(getFieldName(and));
-//                List<T> result = new ArrayList<>();
-//                for (Object obj : elements) {
-//                    if (field.get(obj).equals(params[i+j]))
-//                        result.add(obj);
-//                }
+                Condition tCond = findConditionByName(Condition.nameFromRaw(and));
+                tCond.type = (j + 1 < andConditions.length) ? Condition.Type.AND : Condition.Type.OR;
+
             }
         }
 
+        List<T> result = new ArrayList<>();
+        for (T obj : elements) {
+            Condition.Type last = Condition.Type.OR;
+            boolean init = true;
+            boolean resultCondition = true;
+
+            for (Condition c : condList) {
+                Field field = cls.getField(c.fieldName);
+                boolean pass = field.get(obj).equals(c.value);
+                if (init) {
+                    init = false;
+                    resultCondition = pass;
+                } else
+                    resultCondition = last == Condition.Type.OR ? resultCondition || pass : resultCondition && pass;
+                last = c.type;
+                FD.p("resultCondition", resultCondition);
+            }
+
+            if (resultCondition)
+                result.add(obj);
+        }
+
         FD.p(condList);
-            
+        FD.p(result);
+        return result;
     }
+
+    private Condition findConditionByName(String name) {
+        return condList.get(listIndex.get(name));
+    }
+
 
     private String getFieldName(String condition) {
         return condition.replaceAll("[^a-zA-Z0-9 -]", "");

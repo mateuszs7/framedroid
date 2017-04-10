@@ -34,7 +34,7 @@ public class Select {
         public <T extends FDModel> FDQuery where(String string, Object...objs) {
             Where<T> where = new Where(cls, results, string, objs);
             try {
-                where.parseConditions();
+                results = where.parseConditions();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -60,7 +60,5 @@ public class Select {
         public <T extends FDModel> List<T> execute() {
             return results;
         }
-
-
     }
 }
