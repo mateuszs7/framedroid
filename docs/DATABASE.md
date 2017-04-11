@@ -82,6 +82,7 @@ Available methods:
 * .first();
 * .last();
 * .count()
+* .where(String, Objects)
 
 ```java
 Select.from(User.class).where("name = ? or name = ?", "Matthew", "New name").execute();

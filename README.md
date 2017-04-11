@@ -88,6 +88,7 @@ or
 * [printers](./docs/PRINTERS.md)
 * [api](./docs/API.md)
 * [methods](./docs/METHODS.md)
+* [database](./docs/DATABASE.md)
 
 ## TODO
 - [ ] parsing json to model (using annotations)
