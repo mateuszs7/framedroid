@@ -8,6 +8,7 @@
 - json builder
 - view, time, prefs, screen helpers
 - json parser to model
+- simple events
 
 ## Installation (gradle)
 
@@ -90,6 +91,7 @@ or
 * [api](./docs/API.md)
 * [methods](./docs/METHODS.md)
 * [database](./docs/DATABASE.md)
+* [events](./docs/EVENTS.md)
 
 ## TODO
 - [X] parsing json to model (using annotations)
