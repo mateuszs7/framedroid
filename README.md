@@ -7,6 +7,7 @@
 - printers, toasts, resources, ranges
 - json builder
 - view, time, prefs, screen helpers
+- json parser to model
 
 ## Installation (gradle)
 

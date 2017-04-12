@@ -11,6 +11,19 @@ import java.util.List;
  */
 
 public class JsonHelper {
+    public JSONObject build(SubJson...subJsons) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            for (SubJson subJson : subJsons) {
+                jsonObject.put(subJson.key, subJson.value);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
+
+    @Deprecated
     public JSONObject build(PreJson...preJsons) {
         JSONObject jsonObject = new JSONObject();
         try {
@@ -33,6 +46,10 @@ public class JsonHelper {
 
     }
 
+    /**
+     * Use SubJson instead
+     */
+    @Deprecated
     public static class PreJson {
         String key;
         Object value;

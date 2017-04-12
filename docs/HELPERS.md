@@ -34,11 +34,11 @@ Usage
 
 ```java
 json().build(
-    new JsonHelper.PreJson("id", 1234),
-    new JsonHelper.PreJson("name", "Some name"),
-    new JsonHelper.PreJson("price", 12.34),
-    new JsonHelper.PreJson("anotherJson", json().build(
-        new JsonHelper.PreJson("desc", "test")
+    new SubJson("id", 1234),
+    new SubJson("name", "Some name"),
+    new SubJson("price", 12.34),
+    new SubJson("anotherJson", json().build(
+        new SubJson("desc", "test")
     ))
 );
 ```
