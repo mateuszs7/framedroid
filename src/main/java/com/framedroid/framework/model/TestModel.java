@@ -7,7 +7,10 @@ import com.framedroid.framework.database.Database;
  */
 
 public class TestModel extends FDModel<TestModel> {
+    @JsonParse(name = "name")
     public String name;
+
+    @JsonParse(name = "something")
     public int value;
 
     public TestModel(long id, String name, int value) {
@@ -23,6 +26,7 @@ public class TestModel extends FDModel<TestModel> {
     @Override
     public String toString() {
         return "TestModel{" +
+                "id='" + id + '\'' +
                 "name='" + name + '\'' +
                 ", value=" + value +
                 '}';

@@ -91,7 +91,7 @@ or
 * [database](./docs/DATABASE.md)
 
 ## TODO
-- [ ] parsing json to model (using annotations)
+- [X] parsing json to model (using annotations)
 - [ ] events
 - [ ] remove chars from string
 - [ ] api interface

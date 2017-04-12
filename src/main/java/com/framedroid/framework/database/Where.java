@@ -74,7 +74,7 @@ public class Where<T> {
                 } else
                     resultCondition = last == Condition.Type.OR ? resultCondition || pass : resultCondition && pass;
                 last = c.type;
-                FD.p("resultCondition", resultCondition);
+//                FD.p("resultCondition", resultCondition);
             }
 
             if (resultCondition)
