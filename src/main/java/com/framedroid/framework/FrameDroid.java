@@ -1,7 +1,8 @@
 package com.framedroid.framework;
 
-import android.app.Application;
+import android.app.*;
 import android.content.Context;
+import android.view.View;
 import android.widget.Toast;
 
 import com.framedroid.framework.helpers.JsonHelper;
@@ -48,6 +49,16 @@ public class FrameDroid extends Methods {
     }
 
     public static ViewHelper view() {
+        return viewHelper;
+    }
+
+    public static ViewHelper view(View view) {
+        viewHelper.setCurrentView(new ViewHelper.ViewHolder(view));
+        return viewHelper;
+    }
+
+    public static ViewHelper view(android.app.Activity activity) {
+        viewHelper.setCurrentView(new ViewHelper.ViewHolder(activity));
         return viewHelper;
     }
 

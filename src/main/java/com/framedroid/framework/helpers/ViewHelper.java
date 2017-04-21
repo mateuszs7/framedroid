@@ -1,6 +1,7 @@
 package com.framedroid.framework.helpers;
 
 import android.app.Activity;
+import android.support.annotation.IdRes;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -10,6 +11,11 @@ import android.widget.TextView;
  */
 
 public class ViewHelper {
+    ViewHolder mCurrentView;
+
+    public void setCurrentView(ViewHolder mCurrentView) {
+        this.mCurrentView = mCurrentView;
+    }
 
     public void multiClick(Activity activity, View.OnClickListener listener, int... resIds) {
             setMultiClick(new ViewHolder(activity), listener, resIds);
@@ -101,5 +107,35 @@ public class ViewHelper {
 
     public interface Format<T> {
         void make(T view);
+    }
+
+    /**
+     * Set text to TextView
+     */
+    public ViewHelper text(@IdRes int resId, String text) {
+        checkCurrentView();
+        TextView textView = (TextView) mCurrentView.findView(resId);
+        textView.setText(text);
+        return this;
+    }
+
+    /**
+     * Get text from TextView
+     */
+    public CharSequence text(@IdRes int resId) {
+        checkCurrentView();
+        TextView textView = (TextView) mCurrentView.findView(resId);
+        return textView.getText();
+    }
+
+
+    private void checkCurrentView() {
+        if (mCurrentView == null)
+            throw new RuntimeException("You have to initialize view like FD.view(this) to call this method. (i.e. FD.view(parent).text(R.id.myTextView); )");
+    }
+
+    public <T extends View> T get(@IdRes int resId) {
+        checkCurrentView();
+        return (T)mCurrentView.findView(resId);
     }
 }
