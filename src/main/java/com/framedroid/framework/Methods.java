@@ -9,12 +9,16 @@ import android.os.Environment;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
+import android.support.v4.util.TimeUtils;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -240,5 +244,15 @@ public class Methods {
         );
 
         return image;
+    }
+
+
+    public static <T> T reverse(T object) {
+        if (object instanceof List) {
+            List<Object> list = (List) object;
+            Collections.reverse(list);
+            return (T) list;
+        }
+        return object;
     }
 }

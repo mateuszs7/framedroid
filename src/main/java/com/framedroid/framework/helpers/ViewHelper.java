@@ -18,8 +18,8 @@ public class ViewHelper {
     }
 
     public void multiClick(Activity activity, View.OnClickListener listener, int... resIds) {
-            setMultiClick(new ViewHolder(activity), listener, resIds);
-        }
+        setMultiClick(new ViewHolder(activity), listener, resIds);
+    }
 
     public void multiClick(View view, View.OnClickListener listener, int... resIds) {
         setMultiClick(new ViewHolder(view), listener, resIds);
@@ -28,6 +28,11 @@ public class ViewHelper {
     public void click(View view, View.OnClickListener listener, int resId) {
         multiClick(view, listener, resId);
     }
+
+    public void click(View view, View.OnClickListener listener) {
+        multiClick(view, listener, -1);
+    }
+
     public void click(Activity activity, View.OnClickListener listener, int resId) {
         multiClick(activity, listener, resId);
     }
@@ -66,10 +71,15 @@ public class ViewHelper {
         }
 
         public View findView(int resId) {
+            if (resId == -1)
+                return view;
+
             if (activity != null)
                 return activity.findViewById(resId);
+
             if (view != null)
                 return view.findViewById(resId);
+
             return null;
         }
     }
