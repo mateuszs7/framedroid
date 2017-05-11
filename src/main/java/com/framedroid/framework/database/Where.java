@@ -66,7 +66,8 @@ public class Where<T> {
             boolean resultCondition = true;
 
             for (Condition c : condList) {
-                Field field = cls.getField(c.fieldName);
+                Field field = cls.getDeclaredField(c.fieldName);
+                field.setAccessible(true);
                 boolean pass = field.get(obj).equals(c.value);
                 if (init) {
                     init = false;

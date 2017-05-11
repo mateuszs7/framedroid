@@ -8,10 +8,10 @@ import com.framedroid.framework.database.Database;
 
 public class TestModel extends FDModel<TestModel> {
     @JsonParse(name = "name")
-    public String name;
+    private String name;
 
     @JsonParse(name = "something")
-    public int value;
+    private int value;
 
     public TestModel(long id, String name, int value) {
         this.id = id;
