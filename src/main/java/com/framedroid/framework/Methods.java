@@ -165,6 +165,16 @@ public class Methods {
     }
 
     /**
+     * Get string from resources
+     *
+     * @param resId
+     * @return
+     */
+    public static String string(@StringRes int resId, Object... formatArgs) {
+        return getContext().getString(resId, formatArgs);
+    }
+
+    /**
      * Get drawable from resources
      *
      * @param resId

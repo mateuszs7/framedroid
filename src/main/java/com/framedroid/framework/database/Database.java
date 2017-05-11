@@ -1,12 +1,15 @@
 package com.framedroid.framework.database;
 
 import android.util.ArrayMap;
+import android.util.Pair;
 
 import com.framedroid.framework.model.FDModel;
 
 import java.lang.reflect.Field;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +18,7 @@ import java.util.Map;
  */
 
 public class Database<T extends FDModel> {
-    private Map<Class, Table> tables = new ArrayMap<>();
+    private Map<Class, Table> tables = new ArrayMap<Class, Table>();
 
     public Table byClass(Class cls) {
         Table table = tables.get(cls);
@@ -81,7 +84,10 @@ public class Database<T extends FDModel> {
         }
 
         public T save(T obj) {
-            return objects.put(obj.getId(), obj);
+            objects.put(obj.getId(), obj);
+            tables.put(cls, this);
+            return obj;
+
         }
     }
 }
