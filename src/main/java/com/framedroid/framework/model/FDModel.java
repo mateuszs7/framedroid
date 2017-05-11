@@ -35,7 +35,7 @@ public abstract class FDModel<T extends FDModel> {
     }
 
     private void fromJson(Class<?> aClass, JSONObject jsonObject) {
-        for (Field field : aClass.getFields()) {
+        for (Field field : aClass.getDeclaredFields()) {
             JsonParse jsonParse = field.getAnnotation(JsonParse.class);
             if (jsonParse == null)
                 continue;
