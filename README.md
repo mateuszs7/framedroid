@@ -30,7 +30,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.framedroid.framework:framedroid:0.1.1'
+    compile 'com.framedroid.framework:framedroid:0.2.0'
 }
 ```
 

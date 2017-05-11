@@ -135,7 +135,7 @@ public class Methods {
      * Get color from resources
      *
      * @param resId
-     * @return
+     * @return color
      */
     public static int color(@ColorRes int resId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -148,7 +148,7 @@ public class Methods {
     /**
      * Parse color from hex (i.e. #123ABC) to int (i.e. 0xFF123ABC)
      * @param hex
-     * @return
+     * @return color
      */
     public static int color(String hex) {
         return Color.parseColor(hex);
@@ -158,7 +158,7 @@ public class Methods {
      * Get string from resources
      *
      * @param resId
-     * @return
+     * @return string
      */
     public static String string(@StringRes int resId) {
         return getContext().getString(resId);
@@ -168,7 +168,7 @@ public class Methods {
      * Get string from resources
      *
      * @param resId
-     * @return
+     * @return string
      */
     public static String string(@StringRes int resId, Object... formatArgs) {
         return getContext().getString(resId, formatArgs);
@@ -178,7 +178,7 @@ public class Methods {
      * Get drawable from resources
      *
      * @param resId
-     * @return
+     * @return drawable
      */
     public static Drawable drawable(@DrawableRes int resId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -193,7 +193,7 @@ public class Methods {
      *
      * @param start first number
      * @param end   last number
-     * @return
+     * @return list of integers
      */
     public static Integer[] range(int start, int end) {
         return range(start, end, 1);
@@ -205,7 +205,7 @@ public class Methods {
      * @param start  Integer - first number
      * @param end    Integer - last number
      * @param period Integer
-     * @return
+     * @return list of integers
      */
     public static Integer[] range(int start, int end, int period) {
         Integer[] range = new Integer[(Math.abs(end - start) / period) + 1];
@@ -221,7 +221,7 @@ public class Methods {
      * @param start  Double - first number
      * @param end    Dobule - last number
      * @param period Double
-     * @return
+     * @return lisg of double
      */
     public static Double[] range(double start, double end, double period) {
         Double[] range = new Double[(int) (Math.abs(end - start) / period) + 1];
