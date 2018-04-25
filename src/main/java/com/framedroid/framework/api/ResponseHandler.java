@@ -43,6 +43,7 @@ public abstract class ResponseHandler extends AsyncHttpResponseHandler {
         } catch (JSONException e) {
             onFailure();
             e.printStackTrace();
+            return;
         }
 
         onFailure();
@@ -57,6 +58,7 @@ public abstract class ResponseHandler extends AsyncHttpResponseHandler {
                 if(Config.apiLogRequest)
                     Log.i(TAG, jsonObject.toString());
                 onFailure(jsonObject);
+                return;
             }
             catch (JSONException e){
                 onFailure();
