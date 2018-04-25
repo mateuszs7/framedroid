@@ -35,7 +35,7 @@ public class Where<T> {
     }
 
     public List<T> parseConditions() throws Exception {
-        String[] cond = conditions.split("(or)|(and)");
+        String[] cond = conditions.split("( or )|( and )");
 
         FD.p(cond);
         condList = new ArrayList<>();
@@ -47,10 +47,10 @@ public class Where<T> {
         }
 
         FD.p("XX", condList);
-        String[] orConditions = conditions.split("or");
+        String[] orConditions = conditions.split(" or ");
         for (int i = 0; i < orConditions.length; i++) {
             String or = orConditions[i];
-            String[] andConditions = or.split("and");
+            String[] andConditions = or.split(" and ");
             for (int j = 0; j < andConditions.length; j++) {
                 String and = andConditions[j];
                 Condition tCond = findConditionByName(Condition.nameFromRaw(and));
@@ -68,14 +68,13 @@ public class Where<T> {
             for (Condition c : condList) {
                 Field field = cls.getDeclaredField(c.fieldName);
                 field.setAccessible(true);
-                boolean pass = field.get(obj).equals(c.value);
+                boolean pass = field.get(obj).equals(c.value) || (field.get(obj) == c.value);
                 if (init) {
                     init = false;
                     resultCondition = pass;
                 } else
                     resultCondition = last == Condition.Type.OR ? resultCondition || pass : resultCondition && pass;
                 last = c.type;
-//                FD.p("resultCondition", resultCondition);
             }
 
             if (resultCondition)

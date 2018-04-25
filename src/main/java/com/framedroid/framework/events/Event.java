@@ -40,6 +40,15 @@ public class Event {
         }
     }
 
+    public static <T> void optPublish(String eventName, T...objects) {
+        try {
+            publish(eventName, objects);
+        } catch (Exception e) {
+
+        }
+    }
+
+
     public String getName() {
         return name;
     }
