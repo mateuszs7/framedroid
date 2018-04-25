@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.framedroid.framework.helpers.JsonHelper;
 import com.framedroid.framework.helpers.PrefsHelper;
 import com.framedroid.framework.helpers.ScreenHelper;
+import com.framedroid.framework.helpers.StorageHelper;
 import com.framedroid.framework.helpers.TimeHelper;
 import com.framedroid.framework.helpers.ViewHelper;
 import com.framedroid.framework.model.TestModel;
@@ -21,6 +22,7 @@ public class FrameDroid extends Methods {
     private static TimeHelper timeHelper;
     private static PrefsHelper prefsHelper;
     private static ViewHelper viewHelper;
+    private static StorageHelper storageHelper;
 
     private static JsonHelper jsonHelper = new JsonHelper();
 
@@ -30,6 +32,7 @@ public class FrameDroid extends Methods {
         prefsHelper = new PrefsHelper(context);
         FrameDroid.context = context;
         viewHelper = new ViewHelper();
+        storageHelper = new StorageHelper(context);
     }
 
     public static ScreenHelper screen() {
@@ -50,6 +53,10 @@ public class FrameDroid extends Methods {
 
     public static ViewHelper view() {
         return viewHelper;
+    }
+
+    public static StorageHelper storage() {
+        return storageHelper;
     }
 
     public static ViewHelper view(View view) {
