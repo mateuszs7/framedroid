@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public abstract class SimpleResponseHandler extends ResponseHandler {
     @Override
     public void onFailure(JSONObject jsonObject) {
-        FD.toast("Something went wront");
+        FD.toast("Something went wrong");
         FD.e(jsonObject);
     }
 }

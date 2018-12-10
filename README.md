@@ -1,4 +1,3 @@
-[ ![Download](https://api.bintray.com/packages/mateuszs7/maven/framedroid/images/download.svg) ](https://bintray.com/mateuszs7/maven/framedroid/_latestVersion)
 
 # FrameDroid
 > FrameDroid is a light framework for android applications. It's provide short methods, resources and class for most android problems. Each method can be call from any place in your app.
@@ -18,10 +17,7 @@ Put maven repository in Your's project build.gradle
 ```
 allprojects {
     repositories {
-        jcenter()
-        maven {
-            url  "http://dl.bintray.com/mateuszs7/maven"
-        }
+        maven { url "https://jitpack.io" }
     }
 }
 ```
@@ -30,7 +26,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.framedroid.framework:framedroid:0.2.0'
+    compile 'com.github.mateuszs7:framedroid:0.2.3'
 }
 ```
 
@@ -84,6 +80,18 @@ or
     FD.p("short log");
 ```
 
+
+## List of helper methods
+* print(anything), p(anything), print(a1, a2, a3, ...), p(a1, a2, a3, ...)
+* error(anything), e(anything), error(a1, a2, a3, ...), e(a1, a2, a3, ...)
+* toast(text), toast(stringRes), toast(text, length), toast(stringRes, length)
+* color(colorRes), color(hex)
+* string(stringRes), string(stringRes, args...)
+* drawable(drawableRes)
+* range(start, end), range(start, end, perioid)
+* toggle(list, object)
+* reverse(list)
+More informations in [methods](./docs/METHODS.md) section
 
 ## Documentation
 * [helpers](./docs/HELPERS.md)

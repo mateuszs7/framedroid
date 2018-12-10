@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.Serializable;
 
 /**
  * Created by mateu on 23/03/2017.
@@ -25,6 +28,18 @@ public class PrefsHelper {
         editor.apply();
     }
 
+    public void set(String name, int value) {
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(name, value);
+        editor.apply();
+    }
+
+    public void set(String name, float value) {
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putFloat(name, value);
+        editor.apply();
+    }
+
     public void set(String name, boolean value) {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean(name, value);
@@ -34,9 +49,16 @@ public class PrefsHelper {
     public void set(String name, JSONArray value) {
         set(name, value.toString());
     }
+    public void set(String name, JSONObject value) {
+        set(name, value.toString());
+    }
+
 
     public String get(String name) {
-        return sharedPref.getString(name, null);
+        return get(name, (String) null);
+    }
+    public String get(String name, String def) {
+        return sharedPref.getString(name, def);
     }
 
     public int get(String name, int def) {
