@@ -91,6 +91,7 @@ or
 * range(start, end), range(start, end, perioid)
 * toggle(list, object)
 * reverse(list)
+
 More informations in [methods](./docs/METHODS.md) section
 
 ## Documentation
