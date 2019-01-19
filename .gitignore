@@ -2,7 +2,6 @@
 /lib/build
 *.log
 local.properties
-gradle
 .idea
 .gradle
 framedroid.iml
