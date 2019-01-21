@@ -1,0 +1,2 @@
+before_install:
+  - curl https://gist.githubusercontent.com/noamtamim/b04ef67239d2b43638aa5a9a024a1937/raw/d98694346c3a08cdba93109649a9f71b3c334938/android-sdk-license.sh | sh
