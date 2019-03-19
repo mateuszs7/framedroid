@@ -51,19 +51,19 @@ public class TimeHelper {
     private String diff_formate(long diff) {
         if (diff < 60)
             return diff + " " + mContext.getResources().getQuantityString(R.plurals.seconds_ago, (int) diff);
-        long minTime = Math.round(diff / 60);
+        long minTime = Math.round(diff / 60f);
         if (minTime < 60)
             return minTime + " " + mContext.getResources().getQuantityString(R.plurals.minutes_ago, (int) minTime);
-        long hourTime = Math.round(minTime / 60);
+        long hourTime = Math.round(minTime / 60f);
         if (hourTime < 24)
             return hourTime + " " + mContext.getResources().getQuantityString(R.plurals.hours_ago, (int) hourTime);
-        long dayTime = Math.round(hourTime / 24);
+        long dayTime = Math.round(hourTime / 24f);
         if (dayTime < 30)
             return dayTime + " " + mContext.getResources().getQuantityString(R.plurals.days_ago, (int) dayTime);
-        long monthTime = Math.round(dayTime / 30);
+        long monthTime = Math.round(dayTime / 30f);
         if (monthTime < 12)
             return monthTime + " " + mContext.getResources().getQuantityString(R.plurals.months_ago, (int) monthTime);
-        long yearTime = Math.round(monthTime / 12);
+        long yearTime = Math.round(monthTime / 12f);
         return yearTime + " " + mContext.getResources().getQuantityString(R.plurals.years_ago, (int) yearTime);
     }
 

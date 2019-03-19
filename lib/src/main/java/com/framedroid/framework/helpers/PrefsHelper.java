@@ -73,6 +73,7 @@ public class PrefsHelper {
         return sharedPref.getFloat(name, def);
     }
 
+    @Deprecated
     public int getDouble(String name) {
         return sharedPref.getInt(name, -1);
     }

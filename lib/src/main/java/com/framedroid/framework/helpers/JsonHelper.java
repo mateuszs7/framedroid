@@ -1,6 +1,9 @@
 package com.framedroid.framework.helpers;
 
+import android.support.annotation.Nullable;
+
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -44,6 +47,16 @@ public class JsonHelper {
 
         return jsonArray;
 
+    }
+
+    @Nullable
+    public JSONObject fromString(String string) {
+        try {
+            return new JSONObject(string);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**

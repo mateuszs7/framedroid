@@ -26,7 +26,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.github.mateuszs7:framedroid:0.2.3'
+    compile 'com.github.mateuszs7:framedroid:0.2.13'
 }
 ```
 
@@ -97,7 +97,6 @@ More informations in [methods](./docs/METHODS.md) section
 ## Documentation
 * [helpers](./docs/HELPERS.md)
 * [printers](./docs/PRINTERS.md)
-* [api](./docs/API.md)
 * [methods](./docs/METHODS.md)
 * [database](./docs/DATABASE.md)
 * [events](./docs/EVENTS.md)
@@ -106,5 +105,4 @@ More informations in [methods](./docs/METHODS.md) section
 - [X] parsing json to model (using annotations)
 - [X] events
 - [ ] remove chars from string
-- [ ] api interface
 - [ ] database relations

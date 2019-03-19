@@ -41,7 +41,10 @@ public abstract class FDModel<T extends FDModel> {
                 continue;
 
             try {
+                boolean isAccessible = field.isAccessible();
+                field.setAccessible(true);
                 field.set(this, jsonObject.opt(jsonParse.name()));
+                field.setAccessible(isAccessible);
             } catch (Exception e) {
                 FD.e("Filed to parse json to model");
             }

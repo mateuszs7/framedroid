@@ -3,15 +3,19 @@ package com.framedroid.framework;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 
 import com.framedroid.framework.database.Select;
+import com.framedroid.framework.helpers.SubJson;
 import com.framedroid.framework.model.TestModel;
 
+import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Created by mateu on 11/05/2017.
@@ -78,10 +82,29 @@ public class SimpleDatabaseTest {
         TestModel.fd().remove(1);
 
         TestModel testModel1 = TestModel.fd().get(1);
-        assertEquals(null, testModel1);
+        assertNull(testModel1);
 
         int count = Select.from(TestModel.class).count();
         assertEquals(0, count);
+    }
+
+
+    @Test
+    public void parseTest() throws Exception {
+        JSONObject json = FD.json().build(
+                new SubJson("id", 1),
+                new SubJson("name", "TestName"),
+                new SubJson("something", 3)
+        );
+
+        Log.i("json", json.toString());
+
+        TestModel testModel = new TestModel();
+        testModel.fromJson(json);
+
+        assertEquals(1, testModel.getId());
+        assertEquals("TestName", testModel.getName());
+        assertEquals(3, testModel.getValue());
     }
 
 }

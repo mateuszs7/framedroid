@@ -13,6 +13,9 @@ public class TestModel extends FDModel<TestModel> {
     @JsonParse(name = "something")
     private int value;
 
+    public TestModel() {
+    }
+
     public TestModel(long id, String name, int value) {
         this.id = id;
         this.name = name;
