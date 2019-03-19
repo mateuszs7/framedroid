@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/mateuszs7/framedroid.svg)](https://jitpack.io/#mateuszs7/framedroid)
 
 # FrameDroid
 > FrameDroid is a light framework for android applications. It's provide short methods, resources and class for most android problems. Each method can be call from any place in your app.
